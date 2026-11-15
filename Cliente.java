@@ -1,4 +1,4 @@
-public class cliente {
+public class Cliente {
     private String Cedula;
     private String Nombre;
     private String Apellido;
