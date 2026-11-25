@@ -56,4 +56,13 @@ public class Cliente {
     public void setLicenciaConduccion(String licenciaConduccion) {
         LicenciaConduccion = licenciaConduccion;
     }
+
+    @Override
+    public String toString() {
+        return "Cédula: " + Cedula
+                + " | Nombre: " + Nombre + " " + Apellido
+                + " | Teléfono: " + Telefono
+                + " | Dirección: " + Direccion
+                + " | Licencia: " + LicenciaConduccion;
+    }
 }

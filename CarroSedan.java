@@ -24,4 +24,11 @@ public class CarroSedan extends Vehiculo {
         this.transmision = transmision;
     }
 
+    @Override
+    public String toString() {
+        return "[Sedán] " + super.toString()
+                + " | Combustible: " + tipoCombustible
+                + " | Transmisión: " + transmision;
+    }
+
 }

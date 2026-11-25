@@ -4,6 +4,8 @@ public class principal {
     public static void main(String[] args) {
         Scanner sc  = new Scanner(System.in);
         utilidades u = new utilidades();
+        GestionEstructuras gestion = new GestionEstructuras();
+        Informes informes = new Informes();
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n===== MENÚ PRINCIPAL =====");
@@ -23,12 +25,13 @@ public class principal {
                     System.out.println(MenuVehiculos(sc));
                     break;
                 case 3:
-                    System.out.println(MenuContratos(sc));
+                    System.out.println(MenuContratos(sc, u, gestion));
                     break;
                 case 4:
-                    System.out.println(ImprimirInforme());
+                    System.out.println(informes.imprimirInforme(gestion));
                     break;
                 case 5:
+                    gestion.guardarDatos();
                     System.out.println("Hasta pronto!!");
                     continuar = false;
                     break;
@@ -39,7 +42,6 @@ public class principal {
             }
         }
     }
-}
 
 public static String MenuClientes(Scanner sc){
     boolean continuar = true;
@@ -113,7 +115,7 @@ public static String MenuVehiculos(Scanner sc) {
     }
 }
 
-public static String MenuContratos(Scanner sc) {
+public static String MenuContratos(Scanner sc, utilidades u, GestionEstructuras gestion) {
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n--- GESTIÓN DE CONTRATOS DE RENTING ---");
@@ -127,24 +129,26 @@ public static String MenuContratos(Scanner sc) {
 
             switch (opcion) {
                  case 1:
-                    System.out.println(registrarContacto());
+                    System.out.println(u.registrarContrato(sc, gestion));
                     break;
                 case 2:
-                    System.out.println(modificarContacto());
+                    System.out.println(u.modificarContrato(sc, gestion));
                     break;
                 case 3:
-                    System.out.println(eliminarContacto());
+                    System.out.println(u.finalizarContrato(sc, gestion));
                     break;
                 case 4:
-                    System.out.println(buscarContacto());
+                    System.out.println(u.buscarContrato(sc, gestion));
                     break;
                 case 5:
                     continuar = false;
                     break;
-            
+
                 default:
                     System.out.println("Opción no válida");
                     break;
         }
     }
+    return "Volviendo al menú principal...";
+}
 }
