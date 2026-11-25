@@ -67,4 +67,15 @@ public class ContratoRenting {
         ValorTotal = valorTotal;
     }
 
+    @Override
+    public String toString() {
+        return "Contrato: " + IdContrato
+                + " | Cliente: " + CedulaCliente
+                + " | Vehículo: " + PlacaVehiculo
+                + " | Desde: " + FechaInicio
+                + " | Hasta: " + FechaFin
+                + " | Días: " + TotalDias
+                + " | Valor: $" + String.format("%,.2f", ValorTotal);
+    }
+
 }

@@ -55,4 +55,13 @@ public class Vehiculo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Placa: " + placa
+                + " | Marca: " + marca
+                + " | Modelo: " + modelo
+                + " | Precio diario: $" + String.format("%,.2f", precioDiario)
+                + " | Estado: " + estado;
+    }
 }

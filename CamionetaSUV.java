@@ -24,4 +24,11 @@ public class CamionetaSUV extends Vehiculo {
         this.capacidadMaletero = capacidadMaletero;
     }
 
+    @Override
+    public String toString() {
+        return "[SUV] " + super.toString()
+                + " | Tracción: " + traccion
+                + " | Maletero: " + capacidadMaletero + " L";
+    }
+
 }
