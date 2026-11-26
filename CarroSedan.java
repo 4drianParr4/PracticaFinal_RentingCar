@@ -25,6 +25,11 @@ public class CarroSedan extends Vehiculo {
     }
 
     @Override
+    public String getTipo() {
+        return "Sedan";
+    }
+
+    @Override
     public String toString() {
         return "[Sedán] " + super.toString()
                 + " | Combustible: " + tipoCombustible

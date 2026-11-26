@@ -25,6 +25,11 @@ public class CamionetaSUV extends Vehiculo {
     }
 
     @Override
+    public String getTipo() {
+        return "SUV";
+    }
+
+    @Override
     public String toString() {
         return "[SUV] " + super.toString()
                 + " | Tracción: " + traccion

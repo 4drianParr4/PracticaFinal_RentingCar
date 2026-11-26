@@ -164,7 +164,7 @@ public class GestionEstructuras {
             vehiculo.setEstado("Disponible");
         }
         contratos.remove(contrato);
-        contratosTerminados.add(contrato);
+        contratosTerminados.push(contrato);
         guardarDatos();
         return "Vehículo " + contrato.getPlacaVehiculo() + " devuelto. Contrato finalizado.";
     }

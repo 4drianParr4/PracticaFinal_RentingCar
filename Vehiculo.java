@@ -1,4 +1,4 @@
-public class Vehiculo {
+public abstract class Vehiculo {
     private String placa;
     private String marca;
     private int modelo;
@@ -55,6 +55,8 @@ public class Vehiculo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public abstract String getTipo();
 
     @Override
     public String toString() {
