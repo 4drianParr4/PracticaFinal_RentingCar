@@ -85,17 +85,8 @@ public class ArchivoJSON {
         String contenido = "[\n";
         for (int i = 0; i < vehiculos.size(); i++) {
             Vehiculo v = vehiculos.get(i);
-            contenido = contenido + "  {";
-
-            if (v instanceof CarroSedan) {
-                contenido = contenido + "\"tipo\": \"Sedan\", ";
-            } else if (v instanceof CamionetaSUV) {
-                contenido = contenido + "\"tipo\": \"SUV\", ";
-            } else {
-                contenido = contenido + "\"tipo\": \"Vehiculo\", ";
-            }
-
-            contenido = contenido
+            contenido = contenido + "  {"
+                    + "\"tipo\": \"" + v.getTipo() + "\", "
                     + "\"placa\": \"" + limpiar(v.getPlaca()) + "\", "
                     + "\"marca\": \"" + limpiar(v.getMarca()) + "\", "
                     + "\"modelo\": " + v.getModelo() + ", "
@@ -146,7 +137,7 @@ public class ArchivoJSON {
                     float maletero = Float.parseFloat(obtenerValor(linea, "capacidadMaletero"));
                     vehiculos.add(new CamionetaSUV(maletero, traccion, estado, marca, modelo, placa, precioDiario));
                 } else {
-                    vehiculos.add(new Vehiculo(estado, marca, modelo, placa, precioDiario));
+                    System.out.println("Se omitió el vehículo " + placa + " porque su tipo no es válido en " + archivoVehiculos);
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Se omitió un vehículo con datos numéricos inválidos en " + archivoVehiculos);
@@ -240,7 +231,6 @@ public class ArchivoJSON {
         }
 
         if (inicio < linea.length() && linea.charAt(inicio) == '"') {
-            // Es un texto: va hasta la siguiente comilla
             int fin = linea.indexOf("\"", inicio + 1);
             return linea.substring(inicio + 1, fin);
         } else {
