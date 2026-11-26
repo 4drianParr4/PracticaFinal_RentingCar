@@ -142,37 +142,39 @@ public class utilidades {
     }
 
     public String registrarContrato(Scanner sc, GestionEstructuras gestion) {
+        Validaciones v = new Validaciones();
         System.out.print("Id del contrato: ");
-        String idContrato = sc.next();
+        String idContrato = v.ValidarAlfanumerico(sc, 10);
         System.out.print("Cédula del cliente: ");
-        String cedula = sc.next();
+        String cedula = v.ValidarSoloNumeros(sc, 10);
         System.out.print("Placa del vehículo: ");
-        String placa = sc.next();
+        String placa = v.ValidarAlfanumerico(sc, 6);
         System.out.print("Fecha de inicio (yyyy-MM-dd): ");
-        String fechaInicio = sc.next();
+        String fechaInicio = v.ValidarFecha(sc);
         System.out.print("Fecha de fin (yyyy-MM-dd): ");
-        String fechaFin = sc.next();
+        String fechaFin = v.ValidarFecha(sc);
         return registrarContrato(gestion, idContrato, cedula, placa, fechaInicio, fechaFin);
     }
 
     public String modificarContrato(Scanner sc, GestionEstructuras gestion) {
+        Validaciones v = new Validaciones();
         System.out.print("Id del contrato a modificar: ");
-        String idContrato = sc.next();
+        String idContrato = v.ValidarAlfanumerico(sc, 10);
         if (gestion.buscarContrato(idContrato) == null) {
             return "No existe un contrato activo con el Id " + idContrato;
         }
         System.out.println("1. Modificar fechas");
         System.out.println("2. Modificar duración (días)");
         System.out.print("Digite la opcion que desea: ");
-        String opcion = sc.next();
+        int opcion = v.ValidarEntero(sc, 1, 2); //elegir bien 
 
-        if (opcion.equals("1")) {
+        if (opcion==1) {
             System.out.print("Nueva fecha de inicio (yyyy-MM-dd): ");
-            String fechaInicio = sc.next();
+            String fechaInicio = v.ValidarFecha(sc);
             System.out.print("Nueva fecha de fin (yyyy-MM-dd): ");
-            String fechaFin = sc.next();
+            String fechaFin = v.ValidarFecha(sc);
             return modificarFechasContrato(gestion, idContrato, fechaInicio, fechaFin);
-        } else if (opcion.equals("2")) {
+        } else if (opcion==2) {
             System.out.print("Nueva cantidad de días: ");
             try {
                 int dias = Integer.parseInt(sc.next());
@@ -185,21 +187,23 @@ public class utilidades {
     }
 
     public String finalizarContrato(Scanner sc, GestionEstructuras gestion) {
+        Validaciones v = new Validaciones();
         System.out.print("Id del contrato a finalizar: ");
-        String idContrato = sc.next();
+        String idContrato = v.ValidarAlfanumerico(sc, 10);
         return devolverVehiculo(gestion, idContrato);
     }
 
     public String buscarContrato(Scanner sc, GestionEstructuras gestion) {
+        Validaciones v = new Validaciones();
         System.out.println("1. Buscar por Id de contrato");
         System.out.println("2. Buscar por cédula del cliente");
         System.out.print("Digite la opcion que desea: ");
-        String opcion = sc.next();
+        int opcion = v.ValidarEntero(sc, 1, 2); //revisar bien
 
-        if (opcion.equals("1")) {
+        if (opcion==1) {
             System.out.print("Id del contrato: ");
             return consultarContrato(gestion, sc.next());
-        } else if (opcion.equals("2")) {
+        } else if (opcion==2) {
             System.out.print("Cédula del cliente: ");
             return consultarContratosPorCliente(gestion, sc.next());
         }
