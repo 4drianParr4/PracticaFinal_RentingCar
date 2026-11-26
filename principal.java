@@ -6,6 +6,7 @@ public class principal {
         utilidades u = new utilidades();
         GestionEstructuras gestion = new GestionEstructuras();
         Informes informes = new Informes();
+        Validaciones v = new Validaciones();
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n===== MENÚ PRINCIPAL =====");
@@ -15,7 +16,7 @@ public class principal {
             System.out.println("4. Imprimir informe general");
             System.out.println("5. Salir del sistema");
             System.out.print("Opción: ");
-            int opcion = sc.nextInt();
+            int opcion = v.ValidarEntero(sc, 1, 5);
 
             switch (opcion) {
                 case 1:
@@ -44,6 +45,7 @@ public class principal {
     }
 
 public static String MenuClientes(Scanner sc){
+    Validaciones v = new Validaciones();
     boolean continuar = true;
         while (continuar) {
             System.out.println("\n--- GESTIÓN DE CLIENTES ---");
@@ -53,7 +55,7 @@ public static String MenuClientes(Scanner sc){
             System.out.println("4. Buscar cliente");
             System.out.println("5. Volver al menú principal");
             System.out.print("Digite la opcion que desea: ");
-            int opcion = sc.nextInt();
+            int opcion = v.ValidarEntero(sc, 1, 5);
 
             switch (opcion) {
                 case 1:
@@ -77,9 +79,11 @@ public static String MenuClientes(Scanner sc){
                     break;
         }
     }
+    return "Regresando al menú principal...";
 }
 
 public static String MenuVehiculos(Scanner sc) {
+    Validaciones v = new Validaciones();
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n--- GESTIÓN DE VEHÍCULOS ---");
@@ -89,7 +93,7 @@ public static String MenuVehiculos(Scanner sc) {
             System.out.println("4. Buscar vehículo");
             System.out.println("5. Volver al menú principal");
             System.out.print("Digite la opcion que desea: ");
-            int opcion = sc.nextInt();
+            int opcion = v.ValidarEntero(sc, 1, 5);
 
             switch (opcion) {
                  case 1:
@@ -113,9 +117,11 @@ public static String MenuVehiculos(Scanner sc) {
                     break;
         }
     }
+    return "Regresando al menú principal...";
 }
 
 public static String MenuContratos(Scanner sc, utilidades u, GestionEstructuras gestion) {
+        Validaciones v = new Validaciones();
         boolean continuar = true;
         while (continuar) {
             System.out.println("\n--- GESTIÓN DE CONTRATOS DE RENTING ---");
@@ -125,7 +131,7 @@ public static String MenuContratos(Scanner sc, utilidades u, GestionEstructuras 
             System.out.println("4. Buscar contrato");
             System.out.println("5. Volver al menú principal");
             System.out.print("Digite la opcion que desea: ");
-            int opcion = sc.nextInt();
+            int opcion = v.ValidarEntero(sc, 1, 5);
 
             switch (opcion) {
                  case 1:
@@ -149,6 +155,6 @@ public static String MenuContratos(Scanner sc, utilidades u, GestionEstructuras 
                     break;
         }
     }
-    return "Volviendo al menú principal...";
+    return "Regresando al menú principal...";
 }
 }
